@@ -1,0 +1,20 @@
+name: Deploy Static Website
+
+on:
+  push:
+    branches:
+      - main  # Triggers deployment when changes are pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch where GitHub Pages will serve the site from
+          folder: .  # The root directory (where index.html is located)
